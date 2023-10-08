@@ -17,9 +17,16 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-class CounterPage extends StatelessWidget {
+class CounterPage extends StatefulWidget {
   CounterPage({super.key});
+
+  @override
+  State<CounterPage> createState() => _CounterPageState();
+}
+
+class _CounterPageState extends State<CounterPage> {
   int _counter = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,13 +39,17 @@ class CounterPage extends StatelessWidget {
         children: [
           FloatingActionButton(
             onPressed: (){
-              --_counter;
+              setState(() {
+                --_counter;
+              });
             }
             ,child: const Icon(Icons.remove),),
           const SizedBox(width: 20,),
           FloatingActionButton(
             onPressed: (){
-              ++_counter;
+              setState(() {
+                ++_counter;
+              });
             }
             ,child: const Icon(Icons.add),),
         ],
